@@ -1,0 +1,130 @@
+-- SCHEMA (Schema SQL)
+
+CREATE TABLE Students (
+  student_id INT NOT NULL,
+  first_name VARCHAR(52) NOT NULL DEFAULT '',
+  last_name VARCHAR(52) NOT NULL DEFAULT '',
+  middle_name VARCHAR(52) DEFAULT '',
+  birth_date DATE NOT NULL,
+  city_residence VARCHAR(52) NOT NULL,
+  sex CHAR(1) NOT NULL,
+  grade_level INT NOT NULL,
+  PRIMARY KEY (student_id)
+);
+
+CREATE TABLE Enrollments (
+  enrollment_id INT NOT NULL,
+  student_id INT NOT NULL,
+  course_id VARCHAR(10) NOT NULL,
+  is_paid BOOL NOT NULL,
+  date_enrolled DATE NOT NULL,
+  PRIMARY KEY (enrollment_id)
+);
+
+CREATE TABLE Courses (
+  course_id VARCHAR(10) NOT NULL,
+  course_name VARCHAR(52) NOT NULL DEFAULT '',
+  section CHAR(1) NOT NULL,
+  units INT NOT NULL,
+  faculty_id VARCHAR(7) NOT NULL DEFAULT 'TBA',
+  building VARCHAR(52) NOT NULL DEFAULT 'TBA',
+  room VARCHAR(10) NOT NULL DEFAULT 'TBA',
+  PRIMARY KEY (course_id)
+);
+
+CREATE TABLE Faculty (
+  faculty_id VARCHAR(7) NOT NULL,
+  first_name VARCHAR(52) NOT NULL DEFAULT '',
+  last_name VARCHAR(52) NOT NULL DEFAULT '',
+  middle_name VARCHAR(52) DEFAULT '',
+  department_id VARCHAR(4) NOT NULL,
+  PRIMARY KEY (faculty_id)
+);
+
+CREATE TABLE Departments (
+  department_id VARCHAR(4) NOT NULL,
+  department_name VARCHAR(52) NOT NULL,
+  department_director VARCHAR(52) NOT NULL,
+  PRIMARY KEY(department_id)
+);
+
+
+-- INSERT DATA (Schema SQL)
+
+INSERT INTO Students (student_id, first_name, last_name, middle_name, birth_date, city_residence, sex, grade_level) VALUES(202356002, 'Juan','Santos','Dela Cruz', '2013-09-08', 'Manila','M', 8);
+INSERT INTO Students (student_id, first_name, last_name, middle_name, birth_date, city_residence, sex, grade_level) VALUES(202174852, 'Adam', 'Mercedes','Dazbog', '2011-09-07', 'Quezon City','M', 10);
+INSERT INTO Students (student_id, first_name, last_name, middle_name, birth_date, city_residence, sex, grade_level) VALUES(201934003, 'Parthalán', 'Carola', 'Marquez', '2009-05-05', 'Valenzuela', 'F', 12);
+
+INSERT INTO Enrollments (enrollment_id, student_id, course_id, is_paid, date_enrolled) VALUES(00001, 202356002, 'Math 101', 1, '2023-09-01');
+INSERT INTO Enrollments (enrollment_id, student_id, course_id, is_paid, date_enrolled) VALUES(00002, 202356002, 'Math 102', 0, '2023-09-01');
+INSERT INTO Enrollments (enrollment_id, student_id, course_id, is_paid, date_enrolled) VALUES(00003, 202356002, 'lang 15', 0, '2023-09-01');
+INSERT INTO Enrollments (enrollment_id, student_id, course_id, is_paid, date_enrolled) VALUES(00004, 202356002, 'Sci 10', 1, '2023-09-01');
+INSERT INTO Enrollments (enrollment_id, student_id, course_id, is_paid, date_enrolled) VALUES(00005, 202356002, 'Sci 1', 0, '2023-09-01');
+INSERT INTO Enrollments (enrollment_id, student_id, course_id, is_paid, date_enrolled) VALUES(00006, 202174852, 'Lang 15', 1, '2023-09-05');
+INSERT INTO Enrollments (enrollment_id, student_id, course_id, is_paid, date_enrolled) VALUES(00007, 202174852, 'Hist 90', 1, '2023-09-05');
+INSERT INTO Enrollments (enrollment_id, student_id, course_id, is_paid, date_enrolled) VALUES(00008, 202174852, 'Art 101', 1, '2023-09-05');
+INSERT INTO Enrollments (enrollment_id, student_id, course_id, is_paid, date_enrolled) VALUES(00009, 202174852, 'Math 102', 1, '2023-09-05');
+INSERT INTO Enrollments (enrollment_id, student_id, course_id, is_paid, date_enrolled) VALUES(00010, 201934003, 'ComSci 3', 1, '2023-09-03');
+INSERT INTO Enrollments (enrollment_id, student_id, course_id, is_paid, date_enrolled) VALUES(00011, 201934003, 'Math 102', 0, '2023-09-03');
+INSERT INTO Enrollments (enrollment_id, student_id, course_id, is_paid, date_enrolled) VALUES(00012, 201934003, 'ComSci 30', 0, '2023-09-03');
+INSERT INTO Enrollments (enrollment_id, student_id, course_id, is_paid, date_enrolled) VALUES(00013, 201934003, 'Sci 10', 0, '2023-09-03');
+INSERT INTO Enrollments (enrollment_id, student_id, course_id, is_paid, date_enrolled) VALUES(00014, 201934003, 'Sci 1', 0, '2023-09-03');
+INSERT INTO Enrollments (enrollment_id, student_id, course_id, is_paid, date_enrolled) VALUES(00015, 201934003, 'Art 101', 0, '2023-09-03');
+
+INSERT INTO Courses (course_id, course_name, section, units, faculty_id, building, room) VALUES('Math 101', 'Algebra I', 'A', 3, 'MATH01', 'Institute of Math','403');
+INSERT INTO Courses (course_id, course_name, section, units, faculty_id, building, room) VALUES('Math 102', 'Trigonometry', 'F', 3, 'MATH01', 'Math Building','201');
+INSERT INTO Courses (course_id, course_name, section, units, faculty_id, building, room) VALUES('ComSci 101', 'Fundamentals of Computer Science', 'A', 3, 'CS08', 'Department of Computer Science','311');
+INSERT INTO Courses (course_id, course_name, section, units, faculty_id, building, room) VALUES('ComSci 30', 'Data Structures', 'J', 4, 'CS08', 'Department of Computer Science','115');
+INSERT INTO Courses (course_id, course_name, section, units, faculty_id, building, room) VALUES('ComSci 3', 'Data Structures Laboratory', 'A', 1, 'CS56', 'Department of Computer Science','200');
+INSERT INTO Courses (course_id, course_name, section, units, faculty_id, building, room) VALUES('Art 101', 'History of Fine Arts', 'B', 3, 'ART07', 'Department of Fine Arts','220');
+INSERT INTO Courses (course_id, course_name, section, units, faculty_id, building, room) VALUES('Sci 10', 'Physics I', 'L', 3, 'SCI05', 'Institute of Physics','190');
+INSERT INTO Courses (course_id, course_name, section, units, faculty_id, building, room) VALUES('Sci 1', 'Physics I Lab', 'A', 1, 'SCI05', 'Institute of Physics','120');
+INSERT INTO Courses (course_id, course_name, section, units, faculty_id, building, room) VALUES('Lang 15', 'English I', 'D', 3, 'LANG10', 'Department of Linguistics','113');
+INSERT INTO Courses (course_id, course_name, section, units, faculty_id, building, room) VALUES('Hist 90', 'Philippine History', 'O', 3, 'HIST11', 'Department of History','210');
+ 
+INSERT INTO Faculty (faculty_id, first_name, last_name, middle_name, department_id) VALUES('MATH01', 'Kailey', 'Dela Cruz', 'Camillo', 'MATH');
+INSERT INTO Faculty (faculty_id, first_name, last_name, middle_name, department_id) VALUES('SCI05', 'Eliseo', 'Aubrey', 'Tomas', 'SCI');
+INSERT INTO Faculty (faculty_id, first_name, last_name, middle_name, department_id) VALUES('LANG10', 'Gioacchino', 'Kalyani', 'Torres', 'LANG');
+INSERT INTO Faculty (faculty_id, first_name, last_name, middle_name, department_id) VALUES('ART07', 'Russel', 'Samira', 'Cruz', 'ART');
+INSERT INTO Faculty (faculty_id, first_name, last_name, middle_name, department_id) VALUES('CS08', 'Poornima', 'Brittni', 'Bugallon', 'CS');
+INSERT INTO Faculty (faculty_id, first_name, last_name, middle_name, department_id) VALUES('HIST11', 'Mahinder', 'Quirino', 'Quezon', 'HIST');
+INSERT INTO Faculty (faculty_id, first_name, last_name, middle_name, department_id) VALUES('CS56', 'Manas', 'Torribio', 'Real', 'CS');
+
+INSERT INTO Departments(department_id, department_name, department_director) VALUES('MATH','Mathematics','Anand Wilmar');
+INSERT INTO Departments(department_id, department_name, department_director) VALUES('SCI','Science','Pravin Salomon');
+INSERT INTO Departments(department_id, department_name, department_director) VALUES('LANG','Language','Rowen Starla');
+INSERT INTO Departments(department_id, department_name, department_director) VALUES('ART','Arts','Youri Clive');
+INSERT INTO Departments(department_id, department_name, department_director) VALUES('CS','Computer Science','Ashton Bobbi');
+INSERT INTO Departments (department_id, department_name, department_director) VALUES('HIST','History','Dream Deidre'); 
+
+
+-- QUERIES
+
+WITH enrollment_info AS(
+  SELECT *
+  FROM Enrollments 
+  JOIN Students
+  USING(student_id)
+  INNER JOIN (Courses)
+  USING(course_id)
+  
+)
+
+
+/*--Query 1: Retrieve all students enrolled in a specific course*/
+SELECT course_name AS 'Course Name', CONCAT(first_name, ' ', middle_name, ' ', last_name) AS 'Students Enrolled'
+FROM enrollment_info
+ORDER BY course_name, last_name;
+
+
+/* Query 2: Find the total number of credits taken by each student
+SELECT CONCAT(first_name, ' ', middle_name, ' ', last_name) AS Name, COUNT(units) AS 'Total Units Taken'
+FROM enrollment_info
+GROUP BY Name;
+*/
+/* Query 3: List all courses along with the number of enrolled students
+SELECT course_name AS 'Course Name', COUNT(course_name) AS 'Number of Students Enrolled' 
+FROM enrollment_info
+GROUP BY course_name
+ORDER BY course_name;
+*/
