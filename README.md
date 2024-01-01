@@ -12,6 +12,8 @@ As part of the hands-on labs of the AWS Re/Start, we were tasked to design and i
 
 The schema was created using DrawSQL (https://drawsql.app). This website is an easy to use tool that provides a graphical user interface to do schemas easily and quickly. A schema is provided for this project which can be found in this repository.
 
+![database_schema](https://github.com/yakinara/phman19-database-activity-repo/assets/68409923/88e481b8-a408-4608-8165-9bee6ef40118)
+
 ## Creating the Table and Inserting the data
 
 To eliminate the hassle of setting up the environment for implementing the database schema, DBFiddle (https://db-fiddle.com) was used to create the tables. A total of five tables were created which are the following: 
@@ -29,3 +31,5 @@ The tables were populated with random data using the Data Manipulation Language 
 ## Querying the Database
 
 To ensure the functionality of the database and the correctness of the design, some queries were done also using DML. The result of the example queries is also provided in this repository. 
+
+![query_1](https://github.com/yakinara/phman19-database-activity-repo/assets/68409923/4deda02a-2ef9-4b9c-a515-b60dccd31ed7)
